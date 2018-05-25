@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "-----> Installing GeoIP Database"
-mkdir -p $1/db
-cd $1/db
+mkdir -p $1/GeoIp_db
+cd $1/GeoIp_db
 curl 'http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz' -s -O
 gunzip GeoIP.dat.gz
