@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 echo "-----> Installing GeoIP Database"
-mkdir -p $1/GeoIp_db
+mkdir -p $1/GeoIp_db/
 cd $1/GeoIp_db
 curl 'http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz' -s -O
 gunzip GeoIP.dat.gz
+
+echo "-----> maxminddb"
+mkdir -p $1/maxminddb/maxminddb
+cd $1/maxminddb
+curl 'https://github.com/maxmind/mod_maxminddb/releases/download/${MAXMINDDB_VERSION}/mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz' -s -O
+tar -xvf mod_maxminddb-1.1.0.tar.gz -c $1/maxminddb/maxminddb
+cd $1/maxminddb/maxminddb
+./configure --with-apxs=$1/.heroku/php/bin
+make install
