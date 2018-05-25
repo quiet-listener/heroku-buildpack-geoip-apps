@@ -9,7 +9,7 @@ echo "-----> maxminddb"
 mkdir -p $1/maxminddb/maxminddb
 cd $1/maxminddb
 curl 'https://github.com/maxmind/mod_maxminddb/releases/download/${MAXMINDDB_VERSION}/mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz' -s -O
-tar -xvf mod_maxminddb-1.1.0.tar.gz -c $1/maxminddb/maxminddb
+tar -xvf mod_maxminddb-1.1.0.tar.gz -C $1/maxminddb/maxminddb
 cd $1/maxminddb/maxminddb
 $1/maxminddb/maxminddb/configure --with-apxs=$1/.heroku/php/bin
 make install
